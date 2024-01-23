@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moive finder</title>
+    <link rel="shortcut icon" href="https://tse1.mm.bing.net/th?id=OIP.nxP3I7h-7EyyscuwXyzqyQHaHa&pid=Api&P=0&h=180" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./Assist/boostrap/css/bootstrap.css">
+</head>
+<body>
+<div class="row bg-primary col-12 d-flex align-items-center ">
+    <div class="col-md-4">
+        <h1 class=" text-white "> Movie Finder
+        </h1>
+    </div>
+    <div class="col-md-6 d-flex  flex-row align-items-center  ">
+        <input type="text" id="search" class="form-control w-md-75 h-md-50 p-md-1 m-0 " placeholder="Search Movie....">
+        <button class="btn btn-primary border border-black w-md-25 " id="btnSearch"> search</button>
+    </div>
+   
+
+</div>
+<div class="card container mt-5 p-2 mx-3 bg-info " id="card_1" style="width: 18rem;">
+    <div id="img" class="card-img-top" ></div>
+    <div class="card-body">
+      <h3 class="card-title" id="title"></h3>
+      <!-- <p class="card-text" id="dscribtion"></p> -->
+    </div>
+    <ul class="list-group list-group-flush  " id="movieDetails">
+        <li class="list-group-item" id="year">Year</li>
+        <li class="list-group-item" id="Actors">Actors</li>
+        <li class="list-group-item" id="Released">Released</li>
+        <li class="list-group-item" id="Awards">Awards</li>
+        <li class="list-group-item" id="Country">Country</li>
+        <li class="list-group-item" id="Director">Director</li>
+        <li class="list-group-item" id="Language">Language</li>
+        <li class="list-group-item" id="Writer">Writer</li>
+        <li class="list-group-item" id="Genre">Genre</li>
+        <li class="list-group-item" id="imdbRating">IMDb Rating</li>
+      </ul>
+  </div>
+
+    <script src="./Assist/boostrap/js/bootstrap.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        // Get the parent element (ul) and its children (li)
+        const movieDetailsList = document.getElementById('movieDetails');
+        const listItems = Array.from(movieDetailsList.children);
+    
+        // Sort the list items based on their ID in alphabetical order
+        listItems.sort((a, b) => {
+          const idA = a.id.toUpperCase();
+          const idB = b.id.toUpperCase();
+          if (idA < idB) {
+            return -1;
+          }
+          if (idA > idB) {
+            return 1;
+          }
+          return 0;
+        });
+    
+        // Append the sorted list items back to the parent element
+        listItems.forEach(item => {
+          movieDetailsList.appendChild(item);
+        });
+      </script>
+</body>
+</html>
