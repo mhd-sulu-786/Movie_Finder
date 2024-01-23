@@ -9,7 +9,7 @@ body{
     padding: 0%;
     background-color: black;
     width: 100%;
-    background-image: url('https://tse1.mm.bing.net/th?id=OIP.qzjJOClx6T6hEh0Sp7DaigHaDt&pid=Api&P=0&h=180');
+    background-image: url('pexels-james-lee-2549944.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -40,7 +40,7 @@ body{
     }
     .col-md-6{
         width: 100%;
-        margin-top: 17px;
+        margin-top: 25px;
     }
     .row{
         background-color: transparent;
