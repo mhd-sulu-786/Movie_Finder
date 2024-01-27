@@ -26,7 +26,7 @@ function Push_data() {
         .then(data => {
             searchValue.value='';
             title.innerHTML = data.Title;
-            if (data.Title === undefined) {
+            if (data.Title === undefined  || data.Title === "N/A") {
                 alert('Wrong spelling or name');
                 document.getElementById('card_1').style.display = 'none';
             } else {
