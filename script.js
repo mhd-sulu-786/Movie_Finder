@@ -25,17 +25,7 @@ function Push_data() {
         .then(response => response.json())
         .then(data => {
             searchValue.value='';
-            if(data.Title==undefined){
-                
-            alert(' Wrong specling or name');
-            searchValue.value='';
-            console.error(error);
-            document.getElementById('card_1').style.display='none';
-
-            }
-            else{
-                document.getElementById('card_1').style.display='block';
-                
+            document.getElementById('card_1').style.display='block';
             title.innerHTML = data.Title;
             // document.getElementById('dscribtion').innerHTML=data.plot;
             img.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
@@ -50,7 +40,7 @@ function Push_data() {
             Genre.innerHTML = 'Genre:-'+data.Genre;
             imdbRating.innerHTML = 'IMDB Raiting:-'+data.imdbRating;
 
-            }
+            
         })
         .catch(error => {
             alert(' Wrong specling or name');
