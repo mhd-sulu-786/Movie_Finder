@@ -3,6 +3,8 @@ const accessKey = "eec0fb5";
 const baseUrl = `https://www.omdbapi.com/?apikey=${accessKey}`;
 const searchValue = document.getElementById('search');
 const btnSearch = document.getElementById("btnSearch");
+const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+
 
 btnSearch.addEventListener("click", Push_data);
 
@@ -14,7 +16,7 @@ function Push_data() {
         return;
     }
 
-    const url = `${baseUrl}&t=${searchTerm}&plot=full&r=json`;
+    const url = `${corsProxy}${baseUrl}&t=${searchTerm}&plot=full&r=json`;
 
     fetch(url)
         .then(response => {
