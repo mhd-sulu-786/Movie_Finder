@@ -1,55 +1,61 @@
-
 const accessKey = "eec0fb5";
-const baseUrl = `https://www.omdbapi.com/?apikey=${accessKey}`;
-const searchValue = document.getElementById('search');
-const btnSearch = document.getElementById("btnSearch");
-const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+let link = `https://www.omdbapi.com/?apikey=${accessKey}`;
 
+const Year = document.getElementById('year');
+const Actors = document.getElementById('Actors');
+const Released = document.getElementById('Released');
+const Awards = document.getElementById('Awards');
+const Country = document.getElementById('Country');
+const Director = document.getElementById('Director');
+const Language = document.getElementById('Language');
+const Writer = document.getElementById('Writer');
+const Genre = document.getElementById('Genre');
+const imdbRating = document.getElementById('imdbRating');
+const img = document.getElementById('img');
+const title = document.getElementById('title');
+let searchValue = document.getElementById('search');
+let btnSearch = document.getElementById("btnSearch");
 
 btnSearch.addEventListener("click", Push_data);
 
 function Push_data() {
-    const searchTerm = searchValue.value.trim();
-
-    if (!searchTerm) {
-        alert('Please enter a search term');
-        return;
-    }
-
-    const url = `${corsProxy}${baseUrl}&t=${searchTerm}&plot=full&r=json`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok. Status: ${response.status}`);
-            }
-            return response.json();
-        })
+    link = link + `&t=${searchValue.value}&plot=full&r=json`;
+    console.log(link);
+    fetch(link)
+        .then(response => response.json())
         .then(data => {
-            console.log('API response:', data);
+            searchValue.value='';
+            if(data.Title==undefined){
+                
+            alert(' Wrong specling or name');
+            searchValue.value='';
+            console.error(error);
+            document.getElementById('card_1').style.display='none';
 
-            if (data.Error) {
-                alert(`Error: ${data.Error}`);
-                document.getElementById('card_1').style.display = 'none';
-            } else {
-                document.getElementById('card_1').style.display = 'block';
-                document.getElementById('title').innerHTML = data.Title;
-                document.getElementById('img').src = data.Poster;
-                document.getElementById('Year').innerHTML = 'Year: ' + data.Year;
-                document.getElementById('Actors').innerHTML = 'Actors: ' + data.Actors;
-                document.getElementById('Released').innerHTML = 'Released: ' + data.Released;
-                document.getElementById('Awards').innerHTML = 'Awards: ' + data.Awards;
-                document.getElementById('Country').innerHTML = 'Country: ' + data.Country;
-                document.getElementById('Director').innerHTML = 'Director: ' + data.Director;
-                document.getElementById('Language').innerHTML = 'Language: ' + data.Language;
-                document.getElementById('Writer').innerHTML = 'Writer: ' + data.Writer;
-                document.getElementById('Genre').innerHTML = 'Genre: ' + data.Genre;
-                document.getElementById('imdbRating').innerHTML = 'IMDB Rating: ' + data.imdbRating;
+            }
+            else{
+                document.getElementById('card_1').style.display='block';
+                
+            title.innerHTML = data.Title;
+            // document.getElementById('dscribtion').innerHTML=data.plot;
+            img.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
+            Year.innerHTML = 'Year:-'+data.Year;
+            Actors.innerHTML = 'Actors:-'+ data.Actors;
+            Released.innerHTML = 'Released:-'+ data.Released;
+            Awards.innerHTML = 'Awards:-'+ data.Awards;
+            Country.innerHTML = 'country:-'+ data.Country;
+            Director.innerHTML = 'Director:-'+ data.Director;
+            Language.innerHTML = 'Language:-'+data.Language;
+            Writer.innerHTML = 'Writer:-'+data.Writer;
+            Genre.innerHTML = 'Genre:-'+data.Genre;
+            imdbRating.innerHTML = 'IMDB Raiting:-'+data.imdbRating;
+
             }
         })
         .catch(error => {
-            alert('Error fetching data. Please try again.');
-            console.error('Fetch error:', error);
-            document.getElementById('card_1').style.display = 'none';
+            alert(' Wrong specling or name');
+            searchValue.value='';
+            console.error(error);
+            document.getElementById('card_1').style.display='none';
         });
 }
