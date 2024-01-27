@@ -26,18 +26,13 @@ function Push_data() {
         .then(data => {
             searchValue.value='';
             title.innerHTML = data.Title;
-            if (title.value=='undefined') {
-                
-
-                alert(' Wrong specling or name');
-                searchValue.value='';
-                console.error(error);
-                document.getElementById('card_1').style.display='none';
-            }
-            else{
-                document.getElementById('card_1').style.display='block';
-
-            }
+            if (data.Title === undefined) {
+                alert('Wrong spelling or name');
+                document.getElementById('card_1').style.display = 'none';
+            } else {
+                document.getElementById('card_1').style.display = 'block';
+                title.innerHTML = data.Title;
+            
             // document.getElementById('dscribtion').innerHTML=data.plot;
             img.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
             Year.innerHTML = 'Year:-'+data.Year;
@@ -50,6 +45,7 @@ function Push_data() {
             Writer.innerHTML = 'Writer:-'+data.Writer;
             Genre.innerHTML = 'Genre:-'+data.Genre;
             imdbRating.innerHTML = 'IMDB Raiting:-'+data.imdbRating;
+            }
         })
         .catch(error => {
             alert(' Wrong specling or name');
