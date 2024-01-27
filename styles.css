@@ -48,4 +48,16 @@ body{
     }
 
  }
+ @media(min-width: 480px) and (max-width: 767px) {
+    #card_1{
+        margin-left: 20%;
+        margin-top: 10px;
+
+    }
+    #search_1{
+        margin-top: 25px;
+        width: 90%;
+        margin-left: 5%;
+    }
+ }
 

@@ -24,13 +24,18 @@ function Push_data() {
     fetch(link)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('card_1').style.display='block';
             searchValue.value='';
             title.innerHTML = data.Title;
-            if (data.Title) {
+            if (title.value=='undefined') {
                 
-            }else{
+
+                alert(' Wrong specling or name');
+                searchValue.value='';
+                console.error(error);
                 document.getElementById('card_1').style.display='none';
+            }
+            else{
+                document.getElementById('card_1').style.display='block';
 
             }
             // document.getElementById('dscribtion').innerHTML=data.plot;
