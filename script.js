@@ -27,6 +27,12 @@ function Push_data() {
             document.getElementById('card_1').style.display='block';
             searchValue.value='';
             title.innerHTML = data.Title;
+            if (data.Title) {
+                
+            }else{
+                document.getElementById('card_1').style.display='none';
+
+            }
             // document.getElementById('dscribtion').innerHTML=data.plot;
             img.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
             Year.innerHTML = 'Year:-'+data.Year;
